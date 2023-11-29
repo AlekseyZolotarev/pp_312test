@@ -22,7 +22,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "/users";
@@ -40,7 +40,7 @@ public class UsersController {
         return "/new";
     }
 
-    @PostMapping("")
+    @PostMapping
     public String create(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "/new";

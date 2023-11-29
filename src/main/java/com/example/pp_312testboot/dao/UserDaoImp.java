@@ -20,8 +20,9 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUser(int id) {
-        if (entityManager.find(User.class, id) != null) {
-            return entityManager.find(User.class, id);
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            return user;
         } else {
             throw new EntityNotFoundException("getUser no User");
         }
@@ -44,8 +45,9 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void deleteUser(int id) {
-        if (entityManager.find(User.class, id) != null) {
-            entityManager.remove(entityManager.find(User.class, id));
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(user);
         } else {
             throw new EntityNotFoundException("deleteUser no User");
         }
